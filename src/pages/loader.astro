@@ -1,0 +1,175 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Responsive animated loader</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+
+  <body>
+    <section>
+      <svg width="100%" height="300px" viewBox="0 0 710 300">
+        <!-- Loader -->
+        <rect width="60" height="300" x="0"></rect>
+        <rect width="60" height="300" x="65"></rect>
+        <rect width="60" height="300" x="130"></rect>
+        <rect width="60" height="300" x="195"></rect>
+        <rect width="60" height="300" x="260"></rect>
+        <rect width="60" height="300" x="325"></rect>
+        <rect width="60" height="300" x="390"></rect>
+        <rect width="60" height="300" x="455"></rect>
+        <rect width="60" height="300" x="520"></rect>
+        <rect width="60" height="300" x="585"></rect>
+        <rect width="60" height="300" x="650"></rect>
+      </svg>
+      <h1>Scanning channels</h1>
+      <p>This may take a few minutes</p>
+      <!--Progress bar-->
+      <progress value="32" max="100">32%</progress>
+    </section>
+  </body>
+</html>
+
+<style>
+  body {
+    background: rgb(0 28 47);
+  }
+
+  /* Container for the loader */
+  section {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 40px auto;
+
+    /* Typography */
+    font:
+      300 100% "Roboto",
+      sans-serif;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 4.5vw;
+    margin: 40px 0 12px;
+  }
+
+  p {
+    font-size: 2.8vw;
+    margin-top: 0;
+  }
+
+  /* Loader */
+  rect:nth-child(1) {
+    fill: #1a9f8c;
+    animation-delay: 0;
+  }
+  rect:nth-child(2) {
+    fill: #1eab8d;
+    animation-delay: 200ms;
+  }
+  rect:nth-child(3) {
+    fill: #20b38e;
+    animation-delay: 400ms;
+  }
+  rect:nth-child(4) {
+    fill: #22b78d;
+    animation-delay: 600ms;
+  }
+  rect:nth-child(5) {
+    fill: #22b88e;
+    animation-delay: 800ms;
+  }
+  rect:nth-child(6) {
+    fill: #21b48d;
+    animation-delay: 1000ms;
+  }
+  rect:nth-child(7) {
+    fill: #1eaf8e;
+    animation-delay: 1200ms;
+  }
+  rect:nth-child(8) {
+    fill: #1ca48d;
+    animation-delay: 1400ms;
+  }
+  rect:nth-child(9) {
+    fill: #17968b;
+    animation-delay: 1600ms;
+  }
+  rect:nth-child(10) {
+    fill: #128688;
+    animation-delay: 1800ms;
+  }
+  rect:nth-child(11) {
+    animation-delay: 2000ms;
+    fill: #128688;
+  }
+
+  @keyframes doScale {
+    from {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0.2);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+  rect {
+    animation: doScale 2.2s infinite;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    rect {
+      animation: none;
+    }
+  }
+
+  progress {
+    height: 24px;
+    width: 100%;
+    accent-color: #0eb98f;
+  }
+
+  progress {
+    height: 24px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 20px;
+    background: linear-gradient(to right, #128688 0%, #4db3ff 100%);
+    border: none;
+  }
+
+  progress::-webkit-progress-value {
+    border-radius: 20px;
+    background-color: #7be6e8;
+  }
+
+  progress::-webkit-progress-bar {
+    border-radius: 20px;
+    background: linear-gradient(to right, #128688 0%, #4db3ff 100%);
+  }
+
+  progress::-webkit-progress-inner-element {
+    border-radius: 20px;
+  }
+
+  progress::-moz-progress-bar {
+    border-radius: 20px;
+    background-color: #7be6e8;
+  }
+</style>

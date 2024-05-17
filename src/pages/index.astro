@@ -1,16 +1,45 @@
 ---
-
+// Get all .astro page names
+const pages = import.meta.glob("./*.astro", {
+  query: "?url",
+  import: "default",
+});
+const pagePaths = Object.keys(pages).map((path) => {
+  return path.replace("./", "").replace(".astro", "");
+});
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>css-garden-shed</title>
+  </head>
+  <body>
+    <h1>CSS Garden Shed</h1>
+    <img src="/img/the_shed.svg" alt="The Garden Shed" />
+    <h3>
+      Not a <a href="https://csszengarden.com/" target="blank">Zen Garden</a>,
+      more of a half-tamed jungle.
+    </h3>
+    <p>
+      Tiny projects to learn and play with CSS, quick and easy dev and
+      deployment uisng <a href="https://astro.build/" target="blank">Astro</a> /
+      <a href="https://www.netlify.com/" target="blank">Netlify</a>
+    </p>
+    <p>
+      Coming soon - <em>styles</em> on the home page!!! <sub>(maybe)</sub>
+    </p>
+    <ul>
+      {
+        pagePaths.map((path) => (
+          <li>
+            <a href={`/${path}`}>{path}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
 </html>
