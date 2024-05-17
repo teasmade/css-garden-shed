@@ -4,6 +4,7 @@ const pages = import.meta.glob("./*.astro", {
   query: "?url",
   import: "default",
 });
+
 const pagePaths = Object.keys(pages).map((path) => {
   return path.replace("./", "").replace(".astro", "");
 });
@@ -19,14 +20,18 @@ const pagePaths = Object.keys(pages).map((path) => {
   </head>
   <body>
     <h1>CSS Garden Shed</h1>
-    <img src="/img/the_shed.svg" alt="The Garden Shed" />
+    <img
+      src="/img/the_shed.svg"
+      alt="The Garden Shed"
+      style="width: 50%; min-width: 350px"
+    />
     <h3>
       Not a <a href="https://csszengarden.com/" target="blank">Zen Garden</a>,
       more of a half-tamed jungle.
     </h3>
     <p>
-      Tiny projects to learn and play with CSS, quick and easy dev and
-      deployment uisng <a href="https://astro.build/" target="blank">Astro</a> /
+      Tiny projects to learn and play with CSS, setup for quick and easy dev and
+      deployment using <a href="https://astro.build/" target="blank">Astro</a> /
       <a href="https://www.netlify.com/" target="blank">Netlify</a>
     </p>
     <p>
@@ -41,5 +46,14 @@ const pagePaths = Object.keys(pages).map((path) => {
         ))
       }
     </ul>
+    <footer>
+      <p>
+        <small>
+          &copy; 1873 - {new Date().getFullYear()}
+          <a href="https://github.com/teasmade" target="blank">teasmade</a> /
+          <a href="https://teallen.com" target="blank">teallen.com</a>
+        </small>
+      </p>
+    </footer>
   </body>
 </html>
